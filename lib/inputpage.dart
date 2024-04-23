@@ -10,6 +10,8 @@ enum Gender {
 }
 
 class InputPage extends StatefulWidget {
+  const InputPage({Key? key}) : super(key: key);
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -24,13 +26,14 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF111328),
         title: Text('BMI CALCULATOR'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Row(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
               children: [
                 Expanded(
                   child: GestureDetector(
@@ -70,9 +73,7 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
-          ),
-          Expanded(
-            child: CardClass(
+            CardClass(
               onPress: () {},
               colour: kInactiveCardColour,
               cardChild: Column(
@@ -91,7 +92,7 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: kLabelNumberStyle,
                       ),
-                      SizedBox(width: 5),
+                      SizedBox(width: 10.0),
                       Text(
                         'cm',
                         style: kLabelTextStyle,
@@ -123,9 +124,7 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-          ),
-          Expanded(
-            child: Row(
+            Row(
               children: [
                 Expanded(
                   child: CardClass(
@@ -175,7 +174,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'AGE',
                           style: kLabelTextStyle,
                         ),
@@ -211,29 +210,30 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
-          ),
-          Container(
-            height: kBottomContainerHeight,
-            margin: EdgeInsets.only(top: 10.0),
-            color: kBottomContainerColor,
-            child: GestureDetector(
-              onTap: () {},
-              child: Center(
-                child: Text(
-                  'CALCULATE',
-                  style: kLabelTextStyle,
+            Container(
+              height: kBottomContainerHeight,
+              margin: EdgeInsets.only(top: 5.0),
+              color: kBottomContainerColor,
+              child: GestureDetector(
+                onTap: () {},
+                child: const Center(
+                  child: Text(
+                    'CALCULATE',
+                    style: kLabelTextStyle,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
 class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({required this.icon, required this.onPressed});
+  const RoundIconButton({Key? key, required this.icon, required this.onPressed})
+      : super(key: key);
 
   final IconData icon;
   final VoidCallback onPressed;
@@ -241,7 +241,6 @@ class RoundIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      child: Icon(icon),
       onPressed: onPressed,
       elevation: 6.0,
       shape: RoundedRectangleBorder(
@@ -249,6 +248,7 @@ class RoundIconButton extends StatelessWidget {
       ),
       fillColor: const Color(0xFF4C4F5E),
       constraints: const BoxConstraints.tightFor(width: 56.0, height: 56.0),
+      child: Icon(icon),
     );
   }
 }
