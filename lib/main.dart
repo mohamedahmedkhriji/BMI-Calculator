@@ -1,15 +1,9 @@
+import 'package:dma_application/screens/input_page.dart';
 import 'package:flutter/material.dart';
 
-import 'inputpage.dart';
+void main() => runApp(BMICalculator());
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class BMICalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
