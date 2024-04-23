@@ -1,60 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'card.dart';
+import 'icon.dart';
 
-class InputPage extends StatefulWidget {
-  const InputPage({super.key});
+const bottomContainerHeight = 80.0;
+const activeCardColour = Color(0xFF1D1E33);
+const bottomContainerColor = Colors.red;
 
-  @override
-  State<InputPage> createState() => _InputPageState();
-}
+class InputPage extends StatelessWidget {
+  const InputPage({Key? key}) : super(key: key);
 
-class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DMI CALCULATOR'),
+        title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
         children: [
           Expanded(
-              child: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF1D1E33),
-                    borderRadius: BorderRadius.circular(10.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: CardClass(
+                    colour: activeCardColour,
+                    cardChild: Iconcard(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF1D1E33),
-                    borderRadius: BorderRadius.circular(10.0),
+                Expanded(
+                  child: CardClass(
+                    colour: activeCardColour,
+                    cardChild: Iconcard(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
+              ],
             ),
           ),
           Expanded(
-            child: Container(
-              margin: EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
+            child: CardClass(
+              colour: activeCardColour,
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: CardClass(
+                    colour: activeCardColour,
+                  ),
+                ),
+                Expanded(
+                  child: CardClass(
+                    colour: activeCardColour,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
